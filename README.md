@@ -1,2 +1,2 @@
 # memory-game-js
-Simple memory game in JavaScript
+Simple memory game built in JavaScript.
