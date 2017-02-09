@@ -14,3 +14,34 @@ var secondSelect; //stores index of the second selection
 var matches = 0; //counter for matches made
 var cardBack = "/assets/question.jpg"; //displays back of the card when flipped back over
 
+function select(card){
+  if(clicks === 2){
+    return;
+  }
+  if(clicks === 0){
+    firstSelect = card;
+    document.images[card].src = cardImage[card];
+    clicks = 1;
+  } else {
+    clicks = 2;
+    secondSelect = card;
+    document.images[card].src = cardImage[card];
+    timer = setInterval("check()", 1000);
+  }
+  console.log('poop', clicks);
+  console.log('selection', firstSelect);
+  console.log('selection2', secondSelect);
+}
+
+function check() {
+    clearInterval(timer); //stop timer
+    clicks = 0;
+    if (cardImage[secondSelect] == cardImage[firstSelect]) {
+        matches++;
+        document.getElementById("matches").innerHTML = matches;
+    } else {
+        document.images[firstSelect].src = cardBack;
+        document.images[secondSelect].src = cardBack;
+        return;
+    }
+}
